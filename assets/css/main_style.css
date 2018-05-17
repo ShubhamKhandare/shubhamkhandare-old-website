@@ -1,0 +1,36 @@
+@media screen and (min-width: 500px){
+	.avicii_photo_div{
+		background-image: url("../../assets/img/avicii_main.png");
+		/* Full height */
+		height: 100%; 
+		 /* Center and scale the image nicely */
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	}
+}
+@media screen and (max-width: 500px){
+	.avicii_photo_div{
+		background-image: url("../../assets/img/avicii_phone.jpg");
+		/* Full height */
+		height: 100%; 
+		 /* Center and scale the image nicely */
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	}
+}
+.avicii_photo_div{
+	text-align: center;
+}
+#home_main_line{
+	font-family: 'Tajawal', sans-serif;
+	font-size: 40px ;
+}
+body,html{
+	height: 100%;
+}
+.text_h{
+	padding-top: 90px;
+	font-weight: lighter;
+}

